@@ -9,14 +9,20 @@ import { ErrorHandler } from '../app.error-handler';
 
 @Injectable()
 
-export class RestaurantsService{
+export class RestaurantsService {
 
-    constructor(private http: Http){}
+    constructor(private http: Http) { }
 
-      restaurants(): Observable<Restaurant[]>{
-          return this.http.get(`${MEAT_API}/restaurants`)
+    restaurants(): Observable<Restaurant[]> {
+        return this.http.get(`${MEAT_API}/restaurants`)
             .map(response => response.json())
             .catch(ErrorHandler.handleError)
-      }
+    }
+
+    restaurantById(id: string): Observable<Restaurant> {
+        return this.http.get(`${MEAT_API}/restaurants/${id}`)
+            .map(response => response.json())
+            .catch(ErrorHandler.handleError)
+    }
 
 }

@@ -36,7 +36,7 @@ Expressões regulares usadas na validação de formulários
 
 `/^[0-9]*$/`
 
-## Upgrade para Angular 4.3
+## Upgrade para Angular 5.0
 
 Dependências dos pacotes que devem ficar em package.json:
 
