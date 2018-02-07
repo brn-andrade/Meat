@@ -8,6 +8,7 @@ import { MenuItemComponent } from 'app/restaurant-detail/menu-item/menu-item.com
 import { ReviewsComponent } from './reviews/reviews.component';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from 'app/app.routes';
+import { ShoppingCartService } from 'app/restaurant-detail/shopping-cart/shopping-cart.service';
 
 @NgModule({
   imports: [
@@ -21,6 +22,6 @@ import { ROUTES } from 'app/app.routes';
     MenuItemComponent,
     ReviewsComponent,
   ],
-  providers:[RestaurantsService]
+  providers:[RestaurantsService, ShoppingCartService]
 })
 export class RestaurantDetailModule { }
