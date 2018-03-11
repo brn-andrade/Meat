@@ -16,7 +16,7 @@ export const ROUTES: Routes = [
             {path: 'menu', component: MenuComponent},
             {path: 'reviews', component: ReviewsComponent},
         ]},
-    {path: 'order', component: OrderComponent},
+    {path: 'order', loadChildren: 'app/order/order.module#OrderModule'},
     {path: 'order-summary', component: OrderSummaryComponent},
     {path: 'about', loadChildren: 'app/about/about.module#AboutModule'},
             
