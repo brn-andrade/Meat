@@ -17,7 +17,7 @@ export class OrderComponent implements OnInit {
 
   orderForm: FormGroup;
 
-  delivery: number = 8
+  delivery = 8
 
   paymentOptions: RadioOption[] = [
     { label: 'Dinheiro', value: 'MON' },
@@ -40,13 +40,14 @@ export class OrderComponent implements OnInit {
     }, {validator: OrderComponent.equalsTo})
   }
 
+  // tslint:disable-next-line:member-ordering
   static equalsTo(group: AbstractControl): {[key: string]: boolean} {
     const email = group.get('email')
     const emailConfirmation = group.get('emailConfirmation')
-    if(!email || !emailConfirmation){
+    if (!email || !emailConfirmation) {
       return undefined
     }
-    if(email.value !== emailConfirmation.value){
+    if (email.value !== emailConfirmation.value) {
       return {emailsNotMatch: true}
     }
     return undefined

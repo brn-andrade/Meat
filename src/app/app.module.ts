@@ -17,6 +17,7 @@ import { MenuItemComponent } from './restaurant-detail/menu-item/menu-item.compo
 import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component';
 import { MenuComponent } from './restaurant-detail/menu/menu.component';
 import { ShoppingCartComponent } from './restaurant-detail/shopping-cart/shopping-cart.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 registerLocaleData(localePt);
 
@@ -38,8 +39,9 @@ registerLocaleData(localePt);
   imports: [
     BrowserModule,
     HttpModule,
-    SharedModule.forRoot(),    
+    SharedModule.forRoot(),
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules}),
+    BrowserAnimationsModule,
   ],
   providers: [{provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
