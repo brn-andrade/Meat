@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
@@ -17,7 +17,8 @@ import { MenuItemComponent } from './restaurant-detail/menu-item/menu-item.compo
 import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component';
 import { MenuComponent } from './restaurant-detail/menu/menu.component';
 import { ShoppingCartComponent } from './restaurant-detail/shopping-cart/shopping-cart.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotFoundComponent } from './not-found/not-found.component'
 
 registerLocaleData(localePt);
 
@@ -35,10 +36,11 @@ registerLocaleData(localePt);
     MenuItemComponent,
     ReviewsComponent,
     OrderSummaryComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     SharedModule.forRoot(),
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules}),
     BrowserAnimationsModule,
