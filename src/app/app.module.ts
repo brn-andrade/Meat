@@ -19,7 +19,8 @@ import { MenuComponent } from './restaurant-detail/menu/menu.component';
 import { ShoppingCartComponent } from './restaurant-detail/shopping-cart/shopping-cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginComponent } from './auth/login/login.component'
+import { LoginComponent } from './auth/login/login.component';
+import { UserDetailComponent } from './header/user-detail/user-detail.component'
 
 registerLocaleData(localePt);
 
@@ -39,6 +40,7 @@ registerLocaleData(localePt);
     OrderSummaryComponent,
     NotFoundComponent,
     LoginComponent,
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,
