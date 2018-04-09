@@ -20,9 +20,13 @@
 
 `npm install -g json-server`
 
+### Instalando o nodemon
+
+`npm install -g nodemon`
+
 ### Iniciando o serviço (raiz da aplicação)
 
-`json-server db.json`
+`nodemon --watch backend backend\dist\server.js`
 
 ## Goodies
 

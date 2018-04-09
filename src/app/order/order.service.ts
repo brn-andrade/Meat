@@ -3,14 +3,15 @@ import { ShoppingCartService } from '../restaurant-detail/shopping-cart/shopping
 import { CartItem } from '../restaurant-detail/shopping-cart/cart-tem.model';
 import { Order } from 'app/order/order.model';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MEAT_API } from '../app.api';
+import { LoginService } from '../auth/login/login.service';
 
 @Injectable()
 
 export class OrderService {
 
-    constructor(private cartService: ShoppingCartService, private http: HttpClient) { }
+    constructor(private cartService: ShoppingCartService, private http: HttpClient, private loginService: LoginService) { }
 
     itemsValue(): number {
         return this.cartService.total()
@@ -33,9 +34,14 @@ export class OrderService {
     }
 
     checkOrder(order: Order): Observable<string> {
-        return this.http.post<Order>(`${MEAT_API}/orders`, order)
-        // tslint:disable-next-line:no-shadowed-variable
-        .map(order => order.id)
+        let headers = new HttpHeaders()
+        if (this.loginService.isLoggedIn()) {
+            headers = headers.set('Authorization', `Bearer ${this.loginService.user.accessToken}`)
+        }
+
+        return this.http.post<Order>(`${MEAT_API}/orders`, order, { headers: headers })
+            // tslint:disable-next-line:no-shadowed-variable
+            .map(order => order.id)
     }
     clear() {
         this.cartService.clear()

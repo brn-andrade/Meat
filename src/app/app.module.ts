@@ -18,7 +18,8 @@ import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component'
 import { MenuComponent } from './restaurant-detail/menu/menu.component';
 import { ShoppingCartComponent } from './restaurant-detail/shopping-cart/shopping-cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NotFoundComponent } from './not-found/not-found.component'
+import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './auth/login/login.component'
 
 registerLocaleData(localePt);
 
@@ -37,6 +38,7 @@ registerLocaleData(localePt);
     ReviewsComponent,
     OrderSummaryComponent,
     NotFoundComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
