@@ -51,7 +51,7 @@ registerLocaleData(localePt);
     BrowserAnimationsModule,
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    { provide: LOCALE_ID, useValue: 'pt' },
     {provide: ErrorHandler, useClass: AplicationErrorHandler}
   ],
   bootstrap: [AppComponent]
