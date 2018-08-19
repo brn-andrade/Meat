@@ -23,7 +23,7 @@ function extractToken(req: Request): string {
     let token = undefined
     if (req.headers && req.headers.authorization) {
         // Authorization: Bearer HEADER.PAYLOAD.SIGNATURE
-        const parts: string[] = req.headers.authorization.split(' ')
+        const parts: string[] = (<string>req.headers.authorization).split(' ')
         if (parts.length === 2 && parts[0] === 'Bearer') {
             token = parts[1]
         }

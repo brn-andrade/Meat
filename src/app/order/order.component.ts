@@ -40,7 +40,7 @@ export class OrderComponent implements OnInit {
       number: this.formBuilder.control('', [Validators.required, Validators.pattern(this.numberPattern)]),
       optionalAddress: this.formBuilder.control(''),
       paymentOption: this.formBuilder.control('', [Validators.required]),
-    }, { validators: [OrderComponent.equalsTo], updateOn: 'blur' })
+    }, { validators: [OrderComponent.equalsTo] })
   }
   static equalsTo(group: AbstractControl): { [key: string]: boolean } {
     const email = group.get('email')
