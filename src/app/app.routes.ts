@@ -28,6 +28,7 @@ export const ROUTES: Routes = [
         canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]
     },
     { path: 'order-summary', component: OrderSummaryComponent },
+    { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule' },
     { path: 'about', loadChildren: 'app/about/about.module#AboutModule' },
     { path: '**', component: NotFoundComponent },
 

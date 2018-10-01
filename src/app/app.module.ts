@@ -52,7 +52,7 @@ registerLocaleData(localePt);
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
-    {provide: ErrorHandler, useClass: AplicationErrorHandler}
+    { provide: ErrorHandler, useClass: AplicationErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
