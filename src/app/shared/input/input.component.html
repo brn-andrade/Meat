@@ -1,6 +1,5 @@
 <div class="form-group has-feedback" [class.has-success]="hasSuccess()" [class.has-error]="hasError()">
-  <label class="control-label sr-only" for="inputSuccess">
-    <i class="fa fa-check"></i> {{label}}</label>
+  <label for="{{label}}">{{label}}</label>
 
   <ng-content></ng-content>
 

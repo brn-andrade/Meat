@@ -1,5 +1,88 @@
-<h1>Novo Restaurante</h1>
-<h1>Novo Restaurante</h1>
-<h1>Novo Restaurante</h1>
-<h1>Novo Restaurante</h1>
-<h1>Novo Restaurante</h1>
+<div class="col-lg-offset-2 col-lg-8 col-xs-12">
+  <h4>Novo Restaurante</h4>
+  <hr>
+  <form novalidate [formGroup]="formRestaurant">
+
+    <mt-input-container [errorMessage]="'Nome obrigatório'" [label]="'Nome Restaurante'">
+      <input type="text" class="form-control" formControlName="name" placeholder="Nome">
+    </mt-input-container>
+
+    <div class="row">
+      <div class="form-group col-md-8">
+        <mt-input-container [errorMessage]="'categoria obrigatório'" [label]="'Categoria'">
+          <select class="form-control" formControlName="category">
+            <option disabled value="">Escolha uma opção</option>
+            <option value="Bakery">Padaria</option>
+            <option value="Hamburgers">Hamburger</option>
+            <option value="Coffee Shop">Café</option>
+            <option value="Saudável">Saudável</option>
+            <option value="Ice Cream">Sorvetes</option>
+            <option value="Doces">Doces</option>
+          </select>
+        </mt-input-container>
+      </div>
+
+      <div class="col-md-4">
+        <mt-input-container [errorMessage]="'tempo estimado obrigatório'" [label]="'Tempo Estimado'">
+          <input type="text" class="form-control" formControlName="deliveryEstimate" placeholder="Ex: 10-15m">
+        </mt-input-container>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mt-input-container [label]="'Imagem'">
+          <input type="text" class="form-control" formControlName="imagePath" placeholder="Ex: https://bit.ly/2Nh1cvq">
+        </mt-input-container>
+      </div>
+
+      <div class="col-md-6">
+        <mt-input-container [errorMessage]="'Horario obrigatório'" [label]="'Horario'">
+          <input type="text" class="form-control" formControlName="hours" placeholder="Ex: Aberto das 09 as 18h">
+        </mt-input-container>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Sobre o restaurante:</label>
+      <textarea class="form-control" formControlName="about" rows="3" maxlength="100"></textarea>
+      <p class="text-right">{{this.formRestaurant.value.about?.length}}/100</p>
+    </div>
+
+    <h4>Menu <button class="btn btn-xs btn-primary"><i class="fa fa-plus"></i> Novo Produto</button></h4>
+    <hr>
+
+    <table class="table table-sm table-striped" *ngIf="menu.value.length > 0">
+      <thead>
+        <tr>
+          <th>Img</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Preço</th>
+          <th class="text-center"><i class="fa fa-remove"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of menu.value; let i = index">
+          <td><img [src]="item?.imagePath" height="30" width="30"></td>
+          <td>{{item.name}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.price | currency: 'BRL': 'symbol'}}</td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-danger" (click)="removeMenu(i)">
+              <i class="fa fa-remove"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="col-xs-12 text-center" *ngIf="!menu.value.length">
+      <p>Sem produtos no menu</p>
+    </div>
+  </form>
+</div>
+
+<div class="col-lg-offset-2 col-lg-8 col-xs-12 text-center" style="margin-top: 50px">
+  <button class="btn btn-primary" [disabled]="formRestaurant.invalid" (click)="save()"><i class="fa fa-save"></i>
+    Salvar</button>
+</div>

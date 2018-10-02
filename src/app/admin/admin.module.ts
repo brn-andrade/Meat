@@ -4,6 +4,7 @@ import { AdminComponent } from './admin.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NewRestaurantComponent } from './new-restaurant/new-restaurant.component';
 import { IndexComponent } from './index/index.component';
+import { SharedModule } from '../shared/shared.module';
 
 const ROUTES: Routes = [
   {
@@ -17,8 +18,8 @@ const ROUTES: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    [RouterModule.forChild(ROUTES)],
-
+    SharedModule,
+    RouterModule.forChild(ROUTES)
   ],
   declarations: [
     AdminComponent,

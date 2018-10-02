@@ -16,8 +16,17 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../auth/auth.interceptor';
 
 @NgModule({
-    declarations: [InputComponent, RadioComponent, RatingComponent, SnackbarComponent],
-    imports: [CommonModule, FormsModule, ReactiveFormsModule],
+    declarations: [
+        InputComponent,
+        RadioComponent,
+        RatingComponent,
+        SnackbarComponent
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
     exports: [
         InputComponent,
         RadioComponent,
@@ -41,7 +50,7 @@ export class SharedModule {
                 LoginService,
                 LoggedInGuard,
                 LeaveOrderGuard,
-                {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+                { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
             ]
         }
     }
