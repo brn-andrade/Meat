@@ -45,13 +45,18 @@
 
     <div class="form-group">
       <label>Sobre o restaurante:</label>
-      <textarea class="form-control" formControlName="about" rows="3" maxlength="100"></textarea>
-      <p class="text-right">{{this.formRestaurant.value.about?.length}}/100</p>
+      <textarea #iptDescricao class="form-control" formControlName="about" rows="3" maxlength="100"></textarea>
+      <p class="text-right">{{iptDescricao.value.length}}/100</p>
     </div>
 
-    <h4>Menu <button class="btn btn-xs btn-primary"><i class="fa fa-plus"></i> Novo Produto</button></h4>
+    <h4>Menu <button class="btn btn-xs btn-primary" (click)="newProduct()"><i class="fa fa-plus"></i> Novo
+        Produto</button></h4>
     <hr>
+    <div *ngIf="isOpen == true">
+        <mt-new-menu [menu]="menu"></mt-new-menu>
+    </div>
 
+    <hr>
     <table class="table table-sm table-striped" *ngIf="menu.value.length > 0">
       <thead>
         <tr>
@@ -83,6 +88,10 @@
 </div>
 
 <div class="col-lg-offset-2 col-lg-8 col-xs-12 text-center" style="margin-top: 50px">
-  <button class="btn btn-primary" [disabled]="formRestaurant.invalid" (click)="save()"><i class="fa fa-save"></i>
+  <button type="button" class="btn btn-primary" [disabled]="formRestaurant.invalid" (click)="save()"><i class="fa fa-save"></i>
     Salvar</button>
 </div>
+
+<pre>
+  {{formRestaurant.value | json}}
+</pre>

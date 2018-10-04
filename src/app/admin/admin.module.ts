@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { NewRestaurantComponent } from './new-restaurant/new-restaurant.component';
 import { IndexComponent } from './index/index.component';
 import { SharedModule } from '../shared/shared.module';
+import { NewMenuComponent } from './new-restaurant/new-menu/new-menu.component';
+import { AdminService } from './admin.service';
 
 const ROUTES: Routes = [
   {
@@ -24,7 +26,11 @@ const ROUTES: Routes = [
   declarations: [
     AdminComponent,
     NewRestaurantComponent,
-    IndexComponent
+    IndexComponent,
+    NewMenuComponent
+  ],
+  providers: [
+    AdminService
   ]
 })
 export class AdminModule { }

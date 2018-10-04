@@ -14,6 +14,18 @@ import { LoggedInGuard } from '../auth/loggedin.guard';
 import { LeaveOrderGuard } from '../order/leave-order.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../auth/auth.interceptor';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask/src/currency-mask.config';
+
+export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
+    align: "left",
+    allowNegative: true,
+    decimal: ",",
+    precision: 2,
+    prefix: "R$ ",
+    suffix: "",
+    thousands: "."
+};
 
 @NgModule({
     declarations: [
@@ -25,7 +37,8 @@ import { AuthInterceptor } from '../auth/auth.interceptor';
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        CurrencyMaskModule
     ],
     exports: [
         InputComponent,
@@ -34,7 +47,8 @@ import { AuthInterceptor } from '../auth/auth.interceptor';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        SnackbarComponent
+        SnackbarComponent,
+        CurrencyMaskModule
     ]
 })
 
@@ -50,7 +64,8 @@ export class SharedModule {
                 LoginService,
                 LoggedInGuard,
                 LeaveOrderGuard,
-                { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+                { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+                { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }
             ]
         }
     }
